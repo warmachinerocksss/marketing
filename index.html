@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slideshow with Download Button</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .content {
+            height: 150vh; /* Increase height to ensure scrolling */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: white;
+            background-color: #222;
+        }
+
+        .content p {
+            margin: 0;
+        }
+
+        .dummy-section {
+            height: 150vh; /* Each section is taller than the viewport */
+            background-color: lightgrey;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dummy-section p {
+            margin: 0;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- First content section -->
+    <div class="dummy-section">
+        <p>Scroll down to see the slideshow effect</p>
+    </div>
+
+    <!-- Second content section -->
+    <div class="dummy-section">
+        <p>Keep scrolling...</p>
+    </div>
+
+    <!-- The slideshow script -->
+    <script src="script.js"></script>
+
+</body>
+</html>
