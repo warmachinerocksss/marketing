@@ -37,6 +37,48 @@
             margin: 0;
             font-size: 24px;
         }
+
+        /* Add styles for the Solar Offset Calculator */
+        .solar-calculator {
+            text-align: center;
+            background-color: #f7f7f7;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        .solar-calculator label {
+            display: block;
+            margin-top: 10px;
+            font-size: 1.2rem;
+        }
+
+        .solar-calculator input {
+            padding: 10px;
+            margin-top: 5px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .solar-calculator button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #00ff9c;
+            color: #1e2d3b;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .solar-calculator button:hover {
+            background-color: #00d88c;
+        }
+
+        .solar-calculator p#result {
+            margin-top: 20px;
+            font-size: 1.5rem;
+        }
     </style>
 </head>
 <body>
@@ -49,6 +91,24 @@
     <!-- Second content section -->
     <div class="dummy-section">
         <p>Keep scrolling...</p>
+    </div>
+
+    <!-- Solar Offset Calculator Section -->
+    <div class="solar-calculator">
+        <h2>Solar Offset Calculator</h2>
+        <p>Calculate how much carbon emissions you can save by switching to solar energy.</p>
+        <label for="energyUsage">Annual Energy Usage (kWh):</label>
+        <input type="number" id="energyUsage" placeholder="Enter your annual energy usage in kWh">
+
+        <label for="solarOutput">Solar Output per Year (kWh):</label>
+        <input type="number" id="solarOutput" value="1200" placeholder="Average solar output per kW of panels">
+
+        <label for="panelSize">Size of Solar Installation (kW):</label>
+        <input type="number" id="panelSize" placeholder="Enter your planned solar panel size in kW">
+
+        <button id="calculateSavings">Calculate Carbon Savings</button>
+
+        <p id="result"></p>
     </div>
 
     <!-- The slideshow script -->
