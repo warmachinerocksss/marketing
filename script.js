@@ -8,6 +8,16 @@ const images = [
     "6.png"
 ];
 
+// Array of corresponding solar offsets (example values in tons of CO2 saved)
+const solarOffsets = [
+    "5 tons of CO2 saved",
+    "10 tons of CO2 saved",
+    "15 tons of CO2 saved",
+    "20 tons of CO2 saved",
+    "25 tons of CO2 saved",
+    "30 tons of CO2 saved"
+];
+
 // Create the slideshow container
 const slideshowContainer = document.createElement('div');
 slideshowContainer.style.position = 'fixed';
@@ -17,6 +27,21 @@ slideshowContainer.style.width = '100%';
 slideshowContainer.style.height = '100vh';
 slideshowContainer.style.overflow = 'hidden';
 document.body.appendChild(slideshowContainer);
+
+// Create the solar offset display container
+const offsetDisplay = document.createElement('div');
+offsetDisplay.style.position = 'fixed';
+offsetDisplay.style.bottom = '20px';
+offsetDisplay.style.left = '50%';
+offsetDisplay.style.transform = 'translateX(-50%)';
+offsetDisplay.style.padding = '10px 20px';
+offsetDisplay.style.backgroundColor = '#ffffff';
+offsetDisplay.style.color = '#1e2d3b';
+offsetDisplay.style.fontSize = '1.5rem';
+offsetDisplay.style.borderRadius = '5px';
+offsetDisplay.style.boxShadow = '0px 4px 6px rgba(0, 0, 0, 0.1)';
+offsetDisplay.innerText = solarOffsets[0]; // Initialize with the first offset
+document.body.appendChild(offsetDisplay);
 
 // Function to create and style slides
 images.forEach((src, index) => {
@@ -56,11 +81,11 @@ images.forEach((src, index) => {
         downloadButton.style.boxShadow = '0px 4px 6px rgba(0, 0, 0, 0.1)';
         downloadButton.style.transition = 'background-color 0.3s ease';
 
-        downloadButton.addEventListener('mouseover', function() {
+        downloadButton.addEventListener('mouseover', function () {
             downloadButton.style.backgroundColor = '#00d88c';
         });
 
-        downloadButton.addEventListener('mouseout', function() {
+        downloadButton.addEventListener('mouseout', function () {
             downloadButton.style.backgroundColor = '#00ff9c';
         });
 
@@ -74,41 +99,29 @@ images.forEach((src, index) => {
 const slides = slideshowContainer.children;
 let totalSlides = slides.length;
 
-console.log("Total Slides: ", totalSlides);  // Debugging line
-
-// Function to show the current slide based on scroll position
+// Function to show the current slide based on scroll position and update solar offset
 function showSlideOnScroll() {
     const scrollPosition = window.scrollY;
     const windowHeight = window.innerHeight;
     let totalHeight = document.documentElement.scrollHeight - windowHeight;
 
-    console.log("Scroll Position: ", scrollPosition);
-    console.log("Total Height: ", totalHeight);
-
-    // Fallback to avoid NaN in case of small or no content height
     if (totalHeight <= 0) {
         totalHeight = windowHeight;
     }
 
     const scrollFraction = scrollPosition / totalHeight;
-
-    console.log("Scroll Fraction: ", scrollFraction);
-
     const currentSlide = Math.min(
         Math.floor(scrollFraction * totalSlides),
         totalSlides - 1
     );
 
-    console.log("Current Slide Index: ", currentSlide);  // Debugging line
-
     for (let i = 0; i < slides.length; i++) {
         slides[i].style.opacity = '0';
     }
 
-    if (!isNaN(currentSlide) && slides[currentSlide]) {  // Check if the slide exists and index is not NaN
+    if (!isNaN(currentSlide) && slides[currentSlide]) {
         slides[currentSlide].style.opacity = '1';
-    } else {
-        console.error("Slide at index ", currentSlide, " is undefined.");
+        offsetDisplay.innerText = solarOffsets[currentSlide]; // Update solar offset
     }
 }
 
