@@ -130,3 +130,25 @@ showSlideOnScroll();
 
 // Add scroll event listener
 window.addEventListener('scroll', showSlideOnScroll);
+
+// Your existing slideshow JS code here
+
+// Add this at the end of your existing JS file
+function calculateCarbonSavings() {
+    const energyUsage = parseFloat(document.getElementById('energyUsage').value);
+    const solarOutput = parseFloat(document.getElementById('solarOutput').value);
+    const panelSize = parseFloat(document.getElementById('panelSize').value);
+
+    if (isNaN(energyUsage) || isNaN(solarOutput) || isNaN(panelSize)) {
+        document.getElementById('result').textContent = 'Please fill in all fields with valid numbers.';
+        return;
+    }
+
+    const totalSolarEnergy = panelSize * solarOutput;
+    const carbonSavings = totalSolarEnergy * 0.92;
+
+    document.getElementById('result').textContent = `Your solar installation can save approximately ${carbonSavings.toFixed(2)} kg of CO2 per year.`;
+}
+
+document.getElementById('calculateSavings').addEventListener('click', calculateCarbonSavings);
+
